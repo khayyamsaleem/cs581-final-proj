@@ -52,7 +52,7 @@ def visualize_groups():
         for pair in itertools.combinations(group.members, 2):
             G.add_edge(pair[0].user_id, pair[1].user_id)
 
-    fig = plt.figure(1, figsize=(128,128))
+    fig = plt.figure(1, figsize=(256,256))
     ax = plt.subplot(111)
     nx.draw_networkx(G, ax=ax)
     plt.savefig('social_network.png')
