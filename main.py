@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import networkx as nx
 
 load_dotenv(find_dotenv(),override=True)
 API_TOKEN = os.getenv("GROUPME_ACCESS_TOKEN")
@@ -65,3 +66,4 @@ def test():
 
 if __name__ == '__main__':
     heatmap(get_df_of_counts(), "heatmap.jpg")
+    visualize_groups()

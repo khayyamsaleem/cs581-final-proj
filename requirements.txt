@@ -1,10 +1,12 @@
 certifi==2018.11.29
 chardet==3.0.4
 cycler==0.10.0
+decorator==4.3.0
 GroupyAPI==0.10.2
 idna==2.8
 kiwisolver==1.0.1
 matplotlib==3.0.2
+networkx==2.2
 numpy==1.15.4
 pandas==0.23.4
 pprint==0.1
