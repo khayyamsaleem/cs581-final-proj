@@ -24,7 +24,7 @@ def get_df_of_counts():
     df = pd.DataFrame(np.zeros((len(groups), len(groups))), index=groupnames, columns=groupnames)
     m_i = member_intersections()
     for (x,y) in m_i:
-        df.loc[x,y] = len(m_i[(x,y)])
+        df.loc[x,y] = len(m_i[(x,y)]) if not x == y else -1
     return df
 
 
