@@ -27,6 +27,13 @@ def get_df_of_counts():
         df.loc[x,y] = len(m_i[(x,y)]) if not x == y else -1
     return df
 
+def heatmap(df, savename):
+    fig = plt.figure(1, figsize=(20,20))
+    ax = plt.subplot(111)
+    sns.heatmap(df, ax=ax)
+    plt.savefig(savename)
+    plt.close(fig)
+
 
 def test():
     groups = {}
