@@ -40,7 +40,22 @@ def heatmap(df, savename):
     plt.savefig(savename)
     plt.close(fig)
 
-def visualize_groups():
+def get_name_by_id(pid):
+    for group in groups:
+        for member in group.members:
+            if(member.user_id==pid):
+                return member.nickname
+
+def rebuild_graph_w_names(g):
+    G = nx.Graph()
+    for node in list(g.nodes):
+        G.add_node(get_name_by_id(node))
+    for edge in list(g.edges):
+        G.add_edge(get_name_by_id(edge[0]), get_name_by_id(edge[1]))
+        
+    return G
+
+def visualize_groups(names=False):
     G = nx.Graph()
     groups = list(client.groups.list_all())
 
@@ -52,11 +67,13 @@ def visualize_groups():
         for pair in itertools.combinations(group.members, 2):
             G.add_edge(pair[0].user_id, pair[1].user_id)
 
-    fig = plt.figure(1, figsize=(256,256))
+    if(names):
+        G = rebuild_graph_w_names(G)
+
+    fig = plt.figure(1, figsize=(128,128))
     ax = plt.subplot(111)
     nx.draw_networkx(G, ax=ax)
     plt.savefig('social_network.png')
-
 
 def test():
     groups = {}
@@ -66,4 +83,4 @@ def test():
 
 if __name__ == '__main__':
     heatmap(get_df_of_counts(), "heatmap.png")
-    visualize_groups()
+    visualize_groups(names=True)
