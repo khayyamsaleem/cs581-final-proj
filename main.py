@@ -41,6 +41,7 @@ def heatmap(df, savename):
     plt.close(fig)
 
 def get_name_by_id(pid):
+    groups = list(client.groups.list_all())
     for group in groups:
         for member in group.members:
             if(member.user_id==pid):
