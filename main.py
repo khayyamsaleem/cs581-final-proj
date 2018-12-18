@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 from groupy.client import Client
 from pprint import pprint
+import itertools
 
 load_dotenv(find_dotenv(),override=True)
 
