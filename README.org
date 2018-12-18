@@ -1,0 +1,12 @@
+#+TITLE: CS581 Final Project
+
+* Team
+Brendan von Hofe and Khayyam Saleem
+
+* Goal
+To apply the GroupMe API to show results about network connectivity and strength in our social groups at Stevens
+
+* Build Instructions
+- ~python3 -m venv venv~
+- ~source venv/bin/activate~
+- ~pip install -r requirements.txt~
