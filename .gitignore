@@ -135,3 +135,4 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/python,virtualenv
+*.gdoc
