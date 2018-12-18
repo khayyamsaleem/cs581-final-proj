@@ -13,5 +13,6 @@ To apply the GroupMe API to show results about network connectivity and strength
 - ~source venv/bin/activate~
 - ~pip install -r requirements.txt~
 - Create a ~.env~ file like ~.env.sample~, pasting in your GroupMe access token from their [[https://dev.groupme.com/session/new][developer portal]]
+  - When creating an "application" on the developer portal, set the callback URL to ~http://localhost:3000/api/groupme~
 - ~python main.py~
 - Don't forget to deactivate your virtual environment when you're done with ~deactivate~
