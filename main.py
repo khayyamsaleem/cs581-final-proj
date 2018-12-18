@@ -7,6 +7,8 @@ from pprint import pprint
 import itertools
 import pandas as pd
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 load_dotenv(find_dotenv(),override=True)
 API_TOKEN = os.getenv("GROUPME_ACCESS_TOKEN")
