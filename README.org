@@ -8,11 +8,22 @@ Brendan von Hofe and Khayyam Saleem
 * Goal
 To apply the GroupMe API to show results about network connectivity and strength in our social groups at Stevens
 
+* Setup
+- Create a ~.env~ file like ~.env.sample~, pasting in your GroupMe access token from their [[https://dev.groupme.com/session/new][developer portal]]
+  - When creating an "application" on the developer portal, set the callback URL to ~http://localhost:3000/api/groupme~
+
 * Build Instructions
+** pip
 - ~python3 -m venv venv~
 - ~source venv/bin/activate~
 - ~pip install -r requirements.txt~
-- Create a ~.env~ file like ~.env.sample~, pasting in your GroupMe access token from their [[https://dev.groupme.com/session/new][developer portal]]
-  - When creating an "application" on the developer portal, set the callback URL to ~http://localhost:3000/api/groupme~
+- Don't forget to deactivate your virtual environment when you're done running the application with ~deactivate~
+  
+** conda
+- ~conda create -n cs581 python=3.7 anaconda~
+- ~source activate cs581~
+- ~while read requirement; do conda install -n cs581 --yes $requirement; done < requirements.txt~
+- Deactivate virtual environment with ~source deactivate~
+
+* Run
 - ~python main.py~
-- Don't forget to deactivate your virtual environment when you're done with ~deactivate~
