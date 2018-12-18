@@ -34,10 +34,27 @@ def get_df_of_counts():
 def heatmap(df, savename):
     fig = plt.figure(1, figsize=(20,20))
     ax = plt.subplot(111)
-    ax.title("Heatmap of Common Friends")
+    ax.set_title("Heatmap of Common Friends")
     sns.heatmap(df, ax=ax)
     plt.savefig(savename)
     plt.close(fig)
+
+def visualize_groups():
+    G = nx.Graph()
+    groups = list(client.groups.list_all())
+
+    for group in groups:
+        for member in group.members:
+            G.add_node(member.user_id)
+
+    for group in groups:
+        for pair in itertools.combinations(group.members, 2):
+            G.add_edge(pair[0].user_id, pair[1].user_id)
+
+    fig = plt.figure(1, figsize=(128,128))
+    ax = plt.subplot(111)
+    nx.draw_networkx(G, ax=ax)
+    plt.savefig('social_network.png')
 
 
 def test():
