@@ -1,4 +1,6 @@
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 from dotenv import load_dotenv, find_dotenv
 from groupy.client import Client
 from pprint import pprint
@@ -30,6 +32,7 @@ def get_df_of_counts():
 def heatmap(df, savename):
     fig = plt.figure(1, figsize=(20,20))
     ax = plt.subplot(111)
+    ax.title("Heatmap of Common Friends")
     sns.heatmap(df, ax=ax)
     plt.savefig(savename)
     plt.close(fig)
@@ -42,4 +45,4 @@ def test():
     pprint(groups.keys())
 
 if __name__ == '__main__':
-    print(get_df_of_counts())
+    heatmap(get_df_of_counts(), "heatmap.jpg")
