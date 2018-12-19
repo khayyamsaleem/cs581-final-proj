@@ -70,7 +70,7 @@ def visualize_groups(names=False):
 
     fig = plt.figure(1, figsize=(128,128))
     ax = plt.subplot(111)
-    nx.draw_networkx(G, ax=ax)
+    nx.draw_networkx(G, ax=ax, font_color='green')
     plt.savefig('social_network.png')
 
 
