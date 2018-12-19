@@ -90,4 +90,4 @@ def rate_friends():
 if __name__ == '__main__':
     # heatmap(get_df_of_counts(), "heatmap.png")
     # visualize_groups(names=True)
-    print(rate_friends())
+    pprint(rate_friends())
