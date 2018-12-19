@@ -10,6 +10,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import networkx as nx
+import operator
 
 load_dotenv(find_dotenv(),override=True)
 API_TOKEN = os.getenv("GROUPME_ACCESS_TOKEN")
@@ -54,7 +55,7 @@ def rebuild_graph_w_names(g):
 
     return G
 
-def visualize_groups(names=False):
+def build_social_network():
     G = nx.Graph()
 
     for group in all_groups:
@@ -65,6 +66,11 @@ def visualize_groups(names=False):
         for pair in itertools.combinations(group.members, 2):
             G.add_edge(pair[0].user_id, pair[1].user_id)
 
+    return G
+
+def visualize_groups(names=False):
+    G = build_social_network()
+
     if(names):
         G = rebuild_graph_w_names(G)
 
@@ -73,7 +79,15 @@ def visualize_groups(names=False):
     nx.draw_networkx(G, ax=ax, font_color='green')
     plt.savefig('social_network.png')
 
+def rate_friends():
+    # Morally wrong to run this function
+    g = rebuild_graph_w_names(build_social_network())
+    centers = nx.algorithms.centrality.degree_centrality(g)
+    sorted_friends = sorted(centers.items(), key=operator.itemgetter(1), reverse=True)
+
+    return sorted_friends
 
 if __name__ == '__main__':
-    heatmap(get_df_of_counts(), "heatmap.png")
-    visualize_groups(names=True)
+    # heatmap(get_df_of_counts(), "heatmap.png")
+    # visualize_groups(names=True)
+    print(rate_friends())
