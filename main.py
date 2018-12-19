@@ -81,13 +81,13 @@ def visualize_groups(names=False):
 
 def rate_friends():
     # Morally wrong to run this function
-    g = rebuild_graph_w_names(build_social_network())
+    g = build_social_network()
     centers = nx.algorithms.centrality.degree_centrality(g)
     sorted_friends = sorted(centers.items(), key=operator.itemgetter(1), reverse=True)
 
     return sorted_friends
 
 if __name__ == '__main__':
-    # heatmap(get_df_of_counts(), "heatmap.png")
-    # visualize_groups(names=True)
+    heatmap(get_df_of_counts(), "heatmap.png")
+    visualize_groups(names=False)
     pprint(rate_friends())
