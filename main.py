@@ -77,7 +77,7 @@ def visualize_groups(names=False):
     fig = plt.figure(1, figsize=(128,128))
     ax = plt.subplot(111)
     nx.draw_networkx(G, ax=ax, font_color='green')
-    plt.savefig('social_network.png')
+    plt.savefig('./artifacts/social_network.png')
 
 def rate_friends():
     # Morally wrong to run this function
@@ -88,6 +88,6 @@ def rate_friends():
     return sorted_friends
 
 if __name__ == '__main__':
-    heatmap(get_df_of_counts(), "heatmap.png")
+    heatmap(get_df_of_counts(), "./artifacts/heatmap.png")
     visualize_groups(names=False)
     pprint(rate_friends())
